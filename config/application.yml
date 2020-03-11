@@ -1,0 +1,11 @@
+server:
+  port: 9011
+spring:
+  application:
+    name: jobs
+    version: 1.0
+  profiles:
+    active: dev
+logging:
+  config: config/logback-spring.xml
+

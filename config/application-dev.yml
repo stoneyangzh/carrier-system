@@ -1,0 +1,76 @@
+# Dubbo
+dubbo:
+  application:
+    name: third
+    qosEnable: false
+  protocol:
+    name: dubbo
+    port: 20911
+  registry:
+    address: zookeeper://192.168.1.235:2181?backup=192.168.1.235:2182,192.168.1.235:2183
+    group: dev
+  provider:
+    timeout: 6000
+    version: 3.1.0
+  consumer:
+    check: false
+# Redis & Mongo
+spring:
+  redis:
+    database: 0
+    host: 192.168.1.235
+    port: 6379
+    password: hyHy#eFilM!690%
+    timeout: 2000
+    pool:
+      max-active: 13
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    hospitalInfo:
+      database: 10
+  data:
+    mongodb:
+      uri: mongodb://efilm:efilm%402%25%241@10.30.64.100:3717/admin
+# Swagger Settings
+swagger:
+  request:
+    base:
+      package: com.hyhy.hycloud.third.controller
+  builder:
+    title: 影像云3.0 数字胶片服务中心 PC端接口平台
+    description: 在这里你可以浏览项目所有接口，并提供相关测试工具
+    termsOfServiceUrl: http://efilm-cloud.huiyihuiying.com
+    contact: EFILM CLOUD
+    license: Hycloud
+    licenseUrl: #
+    version: 3.0
+# WeChat
+third:
+  wechat:
+    # 通过code换取网页授权access_token
+    authorization-url: https://api.weixin.qq.com/sns/oauth2/access_token?appid={appid}&secret={secret}&code={code}&grant_type=authorization_code
+    # 发送模板通知
+    template-message-url: https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={token}
+    # 获取jsapi_ticket
+    jsapi-ticket-url: https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={accessToken}&type=jsapi
+    # 获取access_token(公众号的全局唯一接口调用凭据)
+    access-token-url: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}
+    cert-path:
+    welcome:
+      content: 欢迎关注"数字智能胶片"官方微信，<a href=\"https://cloud.huiyihuiying.com/wechat/view/loginLoad.html\">点击这里</a>，马上领取您的医学影像报告。点开还有北上广三甲医院影像科专家在线答疑支招！
+      title: 如何置顶数字智能胶片
+      description: 数字智能胶片——您身边的健康专家：随时随地管理您的健康。
+      pic-url: https://cloud.huiyihuiying.com/public/wechatMsg.jpg
+      url: http://d.xiumi.us/board/v5/33kHi/39480173
+    base-infos:
+      # 数字智能胶片公众号(test)
+      - appid: wxb71d2723728ef678
+        secret: 88652e317cebd682955111d81b86766c
+        #微信开发者服务配置的,必须和微信公众平台配置的token须保持一致
+        token: huiying2015
+      # 智慧影像云公众号(test)
+      - appid: wxbcaf7203b95c193c
+        secret: 09db3214d21d89cae01f8f454a46fbd7
+        #微信开发者服务配置的,必须和微信公众平台配置的token须保持一致
+        token: hycloud20181214
